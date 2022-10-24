@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,13 +8,22 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  cities = ["London", "Paris", "Moscow", "New York", "Karachi", "Sydney"];
+    cities = ["London", "Paris", "Moscow", "New York", "Karachi", "Sydney","kolkata","Delhi"];
 
-  cityControl!: FormControl;
+    form = new FormGroup({
+      cityControl: new FormControl("")
+    });
 
-  ngOnInit(){}
+  constructor(private router: Router){};
+  ngOnInit(){
+    this.form.controls['cityControl'].valueChanges
+    .subscribe(value => {
+      this.router.navigate([value])
+    }
+      );
+  }
   
   ngOnDestroy(){
-
+    
   }
 }

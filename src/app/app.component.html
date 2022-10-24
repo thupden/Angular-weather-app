@@ -2,12 +2,13 @@
   <nav class="navbar navbar-expand-lg bg-primary">
     <h1 class="navbar-brand">Weather App</h1>
   </nav>
-  <form>
+  <form [formGroup]="form">
     <div class="form-group">
       <label for="formSlelct">Select City</label>
-      <select class="form-control" id="formSelect">
-        <option value="{{city}}" *ngFor="let city of cities">{{city}}</option>
+      <select class="form-control" id="formSelect" formControlName="cityControl">
+        <option  *ngFor="let city of cities" [ngValue]="city">{{city}}</option>
       </select>
     </div>
   </form>
+  <router-outlet></router-outlet>
 </div>

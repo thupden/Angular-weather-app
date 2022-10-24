@@ -1,0 +1,30 @@
+<div class="container" *ngIf="data$ | async as data">
+    <div class="row">
+        <div class="heading">
+            <h2>{{data.name}}'s weather</h2>
+            <h4>Today: Monday 24 October</h4>
+        </div>
+        
+    </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="temp">
+                    <span class="big-text">{{data.main.temp | number: '0.0-0'}} C</span>
+                    <span>Feels like</span>
+                    <span>{{data.main.feels_like | number: '0.0-0'}} C</span>
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="outlook">
+                    <span>{{data.weather[0].description | titlecase}}</span>
+                </div>
+            </div>
+        </div>
+    <br>
+    <div class="row">
+        <div class="text-center">
+            <button class="btn btn-primary btn-1">LIKE</button> |
+            <button class="btn btn-primary btn-2">SHARE</button>
+        </div>
+    </div>
+</div>
